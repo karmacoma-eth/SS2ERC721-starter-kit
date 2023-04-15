@@ -43,10 +43,10 @@ To put it differently, minting 1200 NFTs costs 6.4k gas per mint, about 90% chea
 The deployment script [SimpleSS2ERC721.s.sol](https://github.com/karmacoma-eth/SS2ERC721-starter-kit/blob/main/script/SimpleSS2ERC721.s.sol) will do the following:
 
 1. load the `PRIVATE_KEY` from your `.env`, use the corresponding address to send transactions
-1. load the configuration from `token-config.json`
+1. load the configuration from [token-config.json](https://github.com/karmacoma-eth/SS2ERC721-starter-kit/blob/main/token-config.json)
 1. deploy `SimpleSS2ERC721` with your configuration
-1. mint an NFT to all the `recipients` in `token-config.json` in a single transaction
-1. (optionally) transfer the ownership of the contract to the `owner` address specified in `token-config.json`
+1. mint an NFT to all the `recipients` in [token-config.json](https://github.com/karmacoma-eth/SS2ERC721-starter-kit/blob/main/token-config.json) in a single transaction
+1. (optionally) transfer the ownership of the contract to the `owner` address specified in [token-config.json](https://github.com/karmacoma-eth/SS2ERC721-starter-kit/blob/main/token-config.json)
 
 If this all makes sense to you, you are now ready to go!
 
