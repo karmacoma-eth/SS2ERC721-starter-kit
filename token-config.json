@@ -1,6 +1,6 @@
 {
     "owner": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
-    "name": "Pissenlit",
+    "name": "Cool Name",
     "symbol": "COOL",
     "baseURI": "ipfs://<directory-cid>/",
     "recipients": [

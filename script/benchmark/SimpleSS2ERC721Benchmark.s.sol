@@ -5,15 +5,10 @@ import "forge-std/Script.sol";
 
 import {SimpleSS2ERC721} from "src/SimpleSS2ERC721.sol";
 
-contract SimpleSS2ERC721Deploy is Script {
-    function pack(address[] memory recipients) internal pure returns (bytes memory packedRecipients) {
-        require(recipients.length != 0, "NO_RECIPIENTS");
-        require(recipients.length < 1228, "RECIPENTS_TOO_BIG");
-
-        // pack the recipients into a single bytes array
-        // this is just a script, so we don't need the loop to be gas efficient
-        for (uint256 i = 0; i < recipients.length; i++) {
-            packedRecipients = abi.encodePacked(packedRecipients, recipients[i]);
+contract SimpleSS2ERC721Benchmark is Script {
+    function mockAddresses(address startAddr, uint256 num) internal pure returns (bytes memory packedRecipients) {
+        for (uint160 i = 0; i < num; i++) {
+            packedRecipients = abi.encodePacked(packedRecipients, address(uint160(startAddr) + (1 << 128) * i));
         }
     }
 
@@ -30,7 +25,7 @@ contract SimpleSS2ERC721Deploy is Script {
         address[] memory recipients = vm.parseJsonAddressArray(config, ".recipients");
 
         // pack the recipients into a single bytes array
-        bytes memory packedRecipients = pack(recipients);
+        bytes memory packedRecipients = mockAddresses(recipients[0], 1200);
 
         vm.startBroadcast(pk);
 
