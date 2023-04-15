@@ -1,8 +1,8 @@
-# SS2ERC721 Starter Kit
+# 🪂 SS2ERC721 Starter Kit
 
-[SS2ERC721](https://github.com/showtime-xyz/SS2ERC721) is an ERC721 base contract that uses SSTORE2 for extremely efficient batch minting.
+[SS2ERC721](https://github.com/showtime-xyz/SS2ERC721) is an ERC721 base contract that uses SSTORE2 for extremely efficient batch minting, as in mass airdrops to large numbers of recipients.
 
-This repository demonstrates how to deploy a very simple but usable implementation, `SimpleSS2ERC721`.
+This repository demonstrates how to deploy a very simple but usable implementation, [SimpleSS2ERC721](https://github.com/karmacoma-eth/SS2ERC721-starter-kit/blob/main/src/SimpleSS2ERC721.sol).
 
 Some observations:
 - it is an ownable contract that implements `SS2ERC721`
@@ -17,7 +17,7 @@ And that's it! If that's all you need, you can certainly use it as is. No bells 
 
 Using the deployment script attached:
 
-| action | costs in gas | costs in ETH at 40 gwei |
+| action | cost in gas | cost in ETH at 40 gwei |
 | --- | --- | --- |
 | deploy | 1.27M | 0.05 |
 | mint batch of 1200 | 7.67M | 0.30 |
@@ -31,7 +31,7 @@ To put it differently, minting 1200 NFTs costs 6.4k gas per mint, about 90% chea
 ⚠️ **IMPORTANT**: make sure you have read and understood the [safety risks and limitations associated with SS2ERC721](https://github.com/showtime-xyz/SS2ERC721#safety)
 
 1. [Install foundry](https://book.getfoundry.sh/getting-started/installation)
-1. `git clone` this repo
+1. clone/fork this repository (or click `Use this template`)
 1. `cp .env.example .env`
 1. generate a new wallet/deployer address with `cast wallet new`
 1. configure the `PRIVATE_KEY` section of the `.env` file with the private key you just generated
@@ -40,7 +40,7 @@ To put it differently, minting 1200 NFTs costs 6.4k gas per mint, about 90% chea
 
 ### Deploying and minting
 
-The deployment script `script/SimpleSS2ERC721.s.sol` will do the following:
+The deployment script [SimpleSS2ERC721.s.sol](https://github.com/karmacoma-eth/SS2ERC721-starter-kit/blob/main/script/SimpleSS2ERC721.s.sol) will do the following:
 
 1. load the `PRIVATE_KEY` from your `.env`, use the corresponding address to send transactions
 1. load the configuration from `token-config.json`
@@ -71,7 +71,7 @@ forge script script/SimpleSS2ERC721.s.sol --rpc-url <rpc> --broadcast --verify -
 
 The most notable limitation is that SS2ERC721 does not support on-demand minting, only batch minting. And in the case of the specific implementation used in this starter kit, only a _single_ batch is supported, with a maximum size of 1228 recipients.
 
-The other big trade-off is that SS2ERC721 initializes as little storage as possible upfront, instead delaying storage initialization to when transfers occur. This makes transfers initially more expensive, and the view functions `ownerOf` and `balanceOf` are also more complex and more expensive.
+The other big trade-off is that SS2ERC721 initializes as little storage as possible upfront, instead delaying writes to storage on transfers. This makes transfers initially more expensive, and the view functions `ownerOf` and `balanceOf` are also more complex and more expensive.
 
 Check out the [full SS2ERC721 documentation](https://github.com/showtime-xyz/SS2ERC721#trade-offs) for more details about the trade-offs.
 
