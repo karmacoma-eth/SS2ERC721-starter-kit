@@ -1,0 +1,6 @@
+[submodule "lib/forge-std"]
+	path = lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "lib/SS2ERC721"]
+	path = lib/SS2ERC721
+	url = https://github.com/showtime-xyz/SS2ERC721

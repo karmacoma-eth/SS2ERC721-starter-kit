@@ -3,4 +3,7 @@ src = "src"
 out = "out"
 libs = ["lib"]
 
+fs_permissions = [{ access = "read", path = "token-config.json" }]
+
+
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config
